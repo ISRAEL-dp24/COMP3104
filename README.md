@@ -6,6 +6,7 @@
 
 # Commit Msg Hook (Enforce Commit Message Format)
 Ensures commit messages follow a specific pattern.
+test
 File: .git/hooks/commit-msg
 
 ```
