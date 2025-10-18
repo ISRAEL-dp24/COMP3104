@@ -19,6 +19,7 @@ if ! echo "$COMMIT_MSG" | grep -Eq "^(feat|fix|docs|style|refactor|test|chore): 
   exit 1
 fi
 ```
+
 # Pre-Commit Hook (Lint Code Before Commit)
 
 Ensures that the code is linted before committing.
@@ -31,4 +32,18 @@ node --version
 if [ $? -ne 0 ]; then
   echo "Linting failed. Fix errors before committing."
   exit 1
+```
+
+# Pre-Push Hook (Run Tests Before Push)
+
+Runs tests before allowing a push.
+File: .git/hooks/pre-push
+```
+# !/bin/sh
+echo "Running pre-push hook: Running tests..."
+npm test
+if [ $? -ne 0 ]; then
+  echo "Tests failed! Fix them before pushing."
+  exit 1
+fi
 ```
